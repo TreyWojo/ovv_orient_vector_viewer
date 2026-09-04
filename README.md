@@ -6,7 +6,7 @@ OVV is designed to act as an extension of the viewer in geo nodes, allowing you 
 3. fully customizable user defaults for the node
 4. Auto switching of visualization types (that the user can override when they need to)
 
-In designing this tool, I ended up needing a collection of quaternion math nodes and a few matrix math nodes, they have been included as well. 
+In designing this tool, I ended up wanting a collection of quaternion math nodes and a few matrix math nodes, they have been included as well. 
 
 Besides reading this doc, one of the easiest ways to learn the tool is to just try it out! A demo file has been included with the plugin and can be accessed by going to the add-on preferences and clicking "Open Demo Scene."
 
