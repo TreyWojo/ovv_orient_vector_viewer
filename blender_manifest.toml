@@ -2,9 +2,9 @@ schema_version = "1.0.0"
 
 # Example of manifest file for a Blender extension
 # Change the values according to your extension
-id = "vector_viewer"
+id = "ovv_orient_vector_viewer"
 version = "1.0.0"
-name = "Vector Viewer"
+name = "OVV Orient Vector Viewer"
 tagline = "Visualizes vectors, quaternions and matrices in geo-nodes"
 maintainer = "Trey Wojo"
 # Supported types: "add-on", "theme"

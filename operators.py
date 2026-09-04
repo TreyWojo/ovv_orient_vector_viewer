@@ -3,13 +3,13 @@ from pathlib import Path
 from bpy.types import Operator
 from mathutils import Vector
 
-VIS_FILE = Path(__file__).parent / "vv_orient_vector_vis.blend"
+VIS_FILE = Path(__file__).parent / "ovv_orient_vector_vis.blend"
 NODE_VER = [1,0,1]
-VV_GROUP_NAME = ".vv_orient_vector_vis"
+OVV_GROUP_NAME = ".ovv_orient_vector_vis"
 
 
 class OT_create_vector_viewer_node(Operator):
-    bl_idname = "vv.create_vector_viewer"
+    bl_idname = "ovv.create_vector_viewer"
     bl_label = "Create Vector Viewer Node"
     bl_options = {'REGISTER', 'UNDO'}
 
@@ -22,27 +22,27 @@ class OT_create_vector_viewer_node(Operator):
         geo_out = None
         node_tree = context.space_data.edit_tree
 
-        if valid_group := get_custom_node(VV_GROUP_NAME):
+        if valid_group := get_custom_node(OVV_GROUP_NAME):
             if active_node := context.active_node:
                 if geo_out_pins := check_output_pins_for_geo(active_node):
                     geo_out = geo_out_pins[0]
 
             node_ops.select(deselect_all=True)
-            vv_node = make_custom_node(node_tree, "GeometryNodeGroup", 
+            ovv_node = make_custom_node(node_tree, "GeometryNodeGroup", 
                              location=Vector((self.x, self.y)), 
                              width=225, group=valid_group)
 
-            set_vv_group_defaults(context, vv_node)
-            if geo_out: node_tree.links.new(geo_out, vv_node.inputs[0])
+            set_ovv_group_defaults(context, ovv_node)
+            if geo_out: node_tree.links.new(geo_out, ovv_node.inputs[0])
 
             viewer = make_custom_node(node_tree, "GeometryNodeViewer", 
-                             Vector((self.x + (vv_node.width * 1.1), self.y)))
+                             Vector((self.x + (ovv_node.width * 1.1), self.y)))
 
             #setup viewer connections
             viewer.viewer_items.new('GEOMETRY', "Geometry")
             viewer.viewer_items.new('RGBA', "Attribute")
-            node_tree.links.new(vv_node.outputs[0], viewer.inputs[0])
-            node_tree.links.new(vv_node.outputs[1], viewer.inputs[1])
+            node_tree.links.new(ovv_node.outputs[0], viewer.inputs[0])
+            node_tree.links.new(ovv_node.outputs[1], viewer.inputs[1])
             viewer.domain = 'INSTANCE'
             node_tree.nodes.active = viewer
             node_ops.activate_viewer()
@@ -66,7 +66,7 @@ class OT_create_vector_viewer_node(Operator):
 
 
 class OT_create_quat_node(Operator):
-    bl_idname = "vv.create_quat_node"
+    bl_idname = "ovv.create_quat_node"
     bl_label = "Create Quat Node"
     bl_options = {'REGISTER', 'UNDO'}
     node_to_import: bpy.props.StringProperty()
@@ -129,11 +129,11 @@ def get_active_node_tree(context):
 
 
 def make_custom_node(node_tree: bpy.types.NodeTree, node_type:str, location:Vector, width:int=None, group=None):
-    vv_node = node_tree.nodes.new(node_type)
-    if group: vv_node.node_tree = group 
-    vv_node.location = location
-    if width: vv_node.width = width
-    return vv_node
+    ovv_node = node_tree.nodes.new(node_type)
+    if group: ovv_node.node_tree = group 
+    ovv_node.location = location
+    if width: ovv_node.width = width
+    return ovv_node
 
 
 def check_output_pins_for_geo(node: bpy.types.Node) -> list[bpy.types.NodeSocket] | None:
@@ -146,7 +146,7 @@ def check_output_pins_for_geo(node: bpy.types.Node) -> list[bpy.types.NodeSocket
     return None
 
 
-def set_vv_group_defaults(context, node):
+def set_ovv_group_defaults(context, node):
     prefs = context.preferences.addons[__package__].preferences
     names = prefs.rna_type.properties.keys()
     inputs = node.inputs
