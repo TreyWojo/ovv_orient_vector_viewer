@@ -1,0 +1,5 @@
+.venv
+*.blend1
+*.json
+ViewTestFile.blend
+vectorViewer_testBuild.zip
