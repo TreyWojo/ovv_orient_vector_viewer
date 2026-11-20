@@ -4,7 +4,7 @@ from bpy.types import Operator
 from mathutils import Vector
 
 VIS_FILE = Path(__file__).parent / "ovv_orient_vector_vis.blend"
-NODE_VER = [1,0,1]
+NODE_VER = [1,0,2]
 OVV_GROUP_NAME = ".ovv_orient_vector_vis"
 
 
@@ -160,9 +160,9 @@ def check_file_node_groups(name:str) -> bpy.types.Node | None:
         if output_node_ver := my_node.nodes.get("Group Output").get("version", None):
             if output_node_ver.to_list() != NODE_VER:
                 bpy.data.node_groups.remove(my_node)
-                my_node = None
-    return my_node
-
+                return None
+            return my_node
+    return None
 
 def import_node_group(name, blend_file) -> bpy.types.Node | None:
     with bpy.data.libraries.load(str(blend_file)) as (data_from, data_to):
