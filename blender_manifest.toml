@@ -11,11 +11,11 @@ maintainer = "Trey Wojo"
 type = "add-on"
 
 # # Optional: link to documentation, support, source files, etc
-# website = "https://extensions.blender.org/add-ons/my-example-package/"
+ website = "https://github.com/TreyWojo/ovv_orient_vector_viewer/blob/main/README.md"
 
 # # Optional: tag list defined by Blender and server, see:
 # # https://docs.blender.org/manual/en/dev/advanced/extensions/tags.html
-# tags = ["Animation", "Sequencer"]
+ tags = ["Geometry Nodes"]
 
 blender_version_min = "5.2.0"
 # # Optional: Blender version that the extension does not support, earlier versions are supported.
