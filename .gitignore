@@ -1,6 +1,7 @@
 .venv
 *.blend1
 *.json
+*.zip
 __pycache__/
 ViewTestFile.blend
 vectorViewer_testBuild.zip
