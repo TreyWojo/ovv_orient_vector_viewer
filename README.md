@@ -1,4 +1,4 @@
-# OVV - Orient Vector View
+# OVV - Orient Vector Viewer
 
 OVV is designed to act as an extension of the viewer in geo nodes, allowing you to quickly visualize vectors and orientations.
 
