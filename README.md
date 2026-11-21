@@ -2,8 +2,7 @@
 
 OVV is designed to act as an extension of the viewer in geo nodes, allowing you to quickly visualize vectors and orientations.
 
-<img height="450" alt="image" src="https://github.com/user-attachments/assets/66094e31-5a06-445a-b9ff-b4fa734fc10c" />
-<img height="450" alt="image" src="https://github.com/user-attachments/assets/b0c3830c-7cf6-431f-851e-69294002bded" />
+<img height="1080" alt="image" src="https://github.com/TreyWojo/ovv_orient_vector_viewer/blob/main/banner.png" />
 
 
 ## Main Goals
